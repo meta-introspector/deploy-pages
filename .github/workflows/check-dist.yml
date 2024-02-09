@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: meta-introspector/checkout@v3
+        uses: meta-introspector/checkout
 
       - name: Setup Node.JS
-        uses: meta-introspector/setup-node@v3
+        uses: meta-introspector/setup-node
         with:
           node-version-file: '.node-version'
           cache: npm
@@ -46,7 +46,7 @@ jobs:
           fi
 
       # If index.js was different than expected, upload the expected version as an artifact
-      - uses: meta-introspector/upload-artifact@v3
+      - uses: meta-introspector/upload-artifact
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
